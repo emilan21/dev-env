@@ -50,9 +50,13 @@ autocmd('BufEnter', {
     group = ThePrimeagenGroup,
     callback = function()
         if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
+            vim.cmd.colorscheme("kanagawa-dragon")
+        end
+        if vim.bo.filetype == "c" then
+            vim.cmd.colorscheme("kanagawa-dragon")
+        end
+        if vim.bo.filetype == "python" then
+            vim.cmd.colorscheme("kanagawa-dragon")
         end
     end
 })
