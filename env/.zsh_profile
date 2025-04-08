@@ -12,7 +12,7 @@ done
 
 export GOPATH=$HOME/.local/go
 export GIT_EDITOR=$VIM
-#export DENO_INSTALL="$HOME/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 #export FLYCTL_INSTALL="/home/theprimeagen/.fly"
 #export PATH="$FLYCTL_INSTALL/bin:$PATH"
@@ -46,7 +46,7 @@ addToPathFront() {
     fi
 }
 
-addToPathFront $HOME/.zig
+#addToPathFront $HOME/.zig
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/odin
 addToPathFront $HOME/.local/apps
@@ -60,7 +60,7 @@ addToPathFront $HOME/.local/apps/
 addToPathFront $HOME/.local/go/bin
 addToPathFront /usr/local/go/bin
 #addToPathFront $HOME/personal/sumneko/bin
-#addToPathFront $HOME/.deno/bin
+addToPathFront $HOME/.deno/bin
 addToPath $HOME/.cargo/bin
 #addToPath $HOME/personal/ghostty/zig-out/bin
 addToPath $HOME/.local/personal
@@ -99,7 +99,6 @@ alias du=dust
 alias less='bat --paging=always'
 alias vim='nvim'
 alias c='clear'
-alias zig='$HOME/.local/zig'
 
 # Shell intergrations
 {eval `ssh-agent`; ssh-add ~/.ssh/gitea_laptop; } &>/dev/null

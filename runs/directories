@@ -3,4 +3,15 @@
 # Create common directories
 mkdir $HOME/screenshots
 mkdir $HOME/screenrecordings
-mkdir $HOME/.config/personal
+mkdir -p $HOME/.config/personal
+mkdir $HOME/.local/apps
+mkdir $HOME/.local/scripts
+mkdir $HOME/.local/bin
+mkdir $HOME/.local/zig
+mkdir $HOME/.local/npm/bin
+mkdir $HOME/.local/n/bin
+mkdir $HOME/.local/apps/
+mkdir $HOME/.local/go/bin
+mkdir /usr/local/go/bin
+mkdir $HOME/.cargo/bin
+mkdir $HOME/.deno/bin
