@@ -99,7 +99,6 @@ alias du=dust
 alias less='bat --paging=always'
 alias vim='nvim'
 alias c='clear'
-alias zig='$HOME/.local/zig'
 
 # Shell intergrations
 {eval `ssh-agent`; ssh-add ~/.ssh/gitea_laptop; } &>/dev/null
