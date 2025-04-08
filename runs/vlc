@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Install vlc via pacman
+
+sudo pacman -Syy
+sudo pacman -S vlc

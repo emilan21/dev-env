@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Install vagrant via pacman
+# https://wiki.archlinux.org/title/Vagrant
+
+sudo pacman -Syy
+sudo pacman -S vagrant

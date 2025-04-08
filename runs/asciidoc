@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Install via pacman
+# https://docs.asciidoctor.org/asciidoctor/latest/install/linux-packaging/
+
+sudo pacman -Syy
+sudo pacman -S asciidoctor asciidoctor-pdf asciidoctor-diagram

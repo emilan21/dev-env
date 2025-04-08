@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Install Kooha screen recorder via pacman
+sudo pacman -Syy
+sudo pacman -S kooha

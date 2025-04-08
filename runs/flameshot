@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Install flameshot via pacman
+sudo pacman -Syy
+sudo pacman -S flameshot

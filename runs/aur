@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Install aur packages
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz -P /tmp/
+cd /tmp
+tar zxvf google-chrome.tar.gz
+cd google-chrome
+makepkg -sri

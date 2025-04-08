@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Install devops tools
+sudo pacman -Syy
+sudo pacman -S ansible terraform
