@@ -1,0 +1,7 @@
+You need to run the tag-pattern command. The default for that is T (Shift+t). You can then give it a regular expression. By default this will match message subjects.
+
+If you need to select a range of messages by number, you can provide the ~m [MIN]-[MAX] pattern to tag-pattern. There are many other options I've found useful over the years, and you can see a complete list in the “Advanced Usage - Patterns” section of the manual.
+
+You can also use t to tag or untag the highlighted message, to fine-tune the selection.
+
+Then you can run tag-prefix (;) followed by save-message (s), and it will prompt you for a mailbox name. This command marks the saved messages to be deleted; there is also the copy-message command (C, i.e. Shift+c) to copy without marking for deletion.

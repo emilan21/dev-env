@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#git clone -b v4.24 https://github.com/i3/i3.git $HOME/personal/i3
+sudo pacman -S alacritty
+
+#cd $HOME/personal/i3
+#make
+#sudo make installselect multiple

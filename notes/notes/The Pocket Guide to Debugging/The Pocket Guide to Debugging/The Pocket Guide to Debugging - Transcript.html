@@ -1,0 +1,558 @@
+
+<style>
+body {
+  max-width: 800px;
+  margin: 2em auto;
+  font-family: "Lato", sans-serif;
+}
+h1 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+h2 {
+  font-size: 1.25em;
+  margin: 0.5em 0;
+}
+.page {
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 1em;
+  margin: 1em 0;
+}
+ul {
+    padding: 0;
+}
+</style>
+<section class="page"><h1>cover</h1>
+<p>a very cool person wearing bug jewellery and a backpack is inspecting a bug with their magnifying glass. They have curly brown hair and light brown skin.</p>
+<p>their laptop (with bug stickers) and a bug catching net are nearby</p></section><section class="page"><p>cute bug: "you can't catch me!"</p></section><section class="page"><h1>about this zine</h1>
+<p>This zine has:</p>
+<ul>
+<li>a manifesto with my general debugging principles</li>
+<li>a list of my favourite debugging strategies , which you can try in any order that makes sense to you</li>
+</ul></section><section class="page"><h1>table of contents</h1>
+<ul>
+<li>manifesto                     - 6-7</li>
+</ul>
+<h2>chapter 1: first steps</h2>
+<ul>
+<li>preserve the crime scene      - 9</li>
+<li>read the error message        - 10</li>
+<li>reread the error message      - 11</li>
+<li>reproduce the bug             - 12</li>
+<li>inspect unreproducible bugs   - 13</li>
+<li>identify one small question   - 14</li>
+<li>retrace the code's steps      - 15</li>
+<li>write a failing test          - 16</li>
+</ul>
+<h2>chapter 2: get organized</h2>
+<ul>
+<li>brainstorm some suspects      - 18</li>
+<li>rule things out               - 19</li>
+<li>keep a log book               - 20</li>
+<li>draw a diagram                - 21</li>
+</ul>
+<h2>chapter 3: investigate</h2>
+<ul>
+<li>add lots of print statements - 23</li>
+<li>use a debugger               - 24</li>
+<li>jump into a repl             - 25</li>
+<li>find a version that works    - 26</li>
+<li>look at recent changes       - 27</li>
+<li>add assertions everywhere    - 28</li>
+<li>comment out code             - 29</li>
+<li>analyze the logs             - 30</li>
+</ul>
+<h2>chapter 4: research</h2>
+<ul>
+<li>read the docs                - 32</li>
+<li>find the type of bug         - 33</li>
+<li>learn one small thing        - 34</li>
+<li>read the library's code      - 35</li>
+<li>find a new source of info    - 36</li>
+</ul></section><section class="page"><h1>table of contents (continued)</h1>
+<h2>chapter 5: simplify</h2>
+<ul>
+<li>write a tiny program                  - 38</li>
+<li>one thing at a time                   - 39</li>
+<li>tidy up your code                     - 40</li>
+<li>delete the buggy code                 - 41</li>
+<li>reduce randomness                     - 42</li>
+</ul>
+<h2>chapter 6: get unstuck</h2>
+<ul>
+<li>take a break                          - 44</li>
+<li>investigate the bug together          - 45</li>
+<li>timebox your investigation            - 46</li>
+<li>write a message asking for help       - 47</li>
+<li>explain the bug out loud              - 48</li>
+<li>make sure your code is running        - 49</li>
+<li>do the annoying thing                 - 50</li>
+</ul>
+<h2>chapter 7: improve your toolkit</h2>
+<ul>
+<li>try out a new tool                    - 51</li>
+<li>types of debugging tools              - 52</li>
+<li>shorten your feedback loop            - 53</li>
+<li>add pretty printing                   - 54</li>
+<li>colours, graphs, and sounds           - 55</li>
+</ul>
+<h2>chapter 8: after it's fixed</h2>
+<ul>
+<li>do a victory lap                      - 57</li>
+<li>tell a friend what you learned        - 58</li>
+<li>find related bugs                     - 59</li>
+<li>add a comment                         - 60</li>
+<li>document your quest                   - 61</li>
+</ul></section><section class="page"><h1>a debugging manifesto</h1>
+<h2>1. inspect, don't squash</h2>
+<ul>
+<li>Try to fix the bug (crossed out, bad)</li>
+<li>Understand what happened (checkmarks, smiley faces)</li>
+</ul>
+<h2>2. Being stuck is temporary.</h2>
+<p>person (thinking): I WILL NEVER FIGURE THIS OUT</p>
+<p>... 20 minutes later...</p>
+<p>person (thinking): Wait, I haven't tried X...</p>
+<h2>3. Trust nobody and nothing</h2>
+<p>person (thinking): This library can't be buggy...</p>
+<p>person (thinking): Or CAN IT??? </p>
+<p>(slowly growing horror)</p>
+<h2>4. It's probably your code</h2>
+<p>person (thinking): I KNOW my code is right</p>
+<p>... 2 hours later ...</p>
+<p>person (thinking): Ugh, my code WAS the problem?!!?</p></section><section class="page"><h1>debugging manifesto (part 2)</h1>
+<h2>5. don't go it alone</h2>
+<p>person 1: "WHAT IS HAPPENING?!?"
+person 2: "What if we try X?"</p>
+<h2>6. There's always a reason.</h2>
+<p>Computers are always logical, even when it doesn't feel that way. </p>
+<h2>7.  Build your toolkit</h2>
+<p>person (thinking): "wow, the CSS inspector makes debugging SO much easier"</p>
+<h2>8. It can be an adventure.</h2>
+<p>person:  "You wouldn't BELIEVE the weird bug I found! "</p></section><section class="page"><h1>chapter 1</h1>
+<p>FIRST STEPS</p>
+<p>(picture of a cute bug walking)</p></section><section class="page"><h1>preserve the crime scene</h1>
+<p>One of the easiest ways to start is to save a copy of the buggy code and its inputs/outputs:</p>
+<p>person (thinking): "don't touch anything! we need to preserve evidence!"</p>
+<p>Depending on the situation, you might want to:</p>
+<ul>
+<li>make a git commit of the buggy code! (on a branch, just for you)</li>
+<li>save the input that triggered the bug</li>
+<li>save logs/screenshots to analyze later</li>
+</ul></section><section class="page"><h1>read the error message</h1>
+<p>Error messages are a goldmine of information, but they can be very annoying to read:</p>
+<p>(image of an error message, with 3 notes pointing to it):</p>
+<ul>
+<li>giant 50 line stack trace full of impenetrable jargon</li>
+<li>often seems totally unrelated to your bug</li>
+<li>"permission denied" sometimes means "doesn't exist"</li>
+</ul>
+<p>Tricks to extract information from giant error messages:</p>
+<ul>
+<li>If there are many different error messages, start with the first one. Fixing it will often fix the rest.</li>
+<li>If the end of a long error message isn't helpful, try looking at the beginning (scroll up!)</li>
+<li>On the command line, pipe it to <code>less</code> so that you can scroll/search it (<code>./my_program 2&gt;&amp;1 | less</code>). Note: if you don't include <code>2&gt;&amp;1</code>, <code>less</code> won't show you the error messages (just the output)</li>
+</ul></section><section class="page"><h1>reread the error message</h1>
+<p>person (thinking): After I've read the error message, I sometimes run into one of these 3 problems:</p>
+<p>1- misreading the message</p>
+<p>person (thinking) ok, it says the error is in file X</p>
+<p>spoiler: it actually said file Y</p>
+<p>2- disregarding what the message is saying</p>
+<p>person (thinking): well, the message says X, but that's impossible...</p>
+<p>spoiler: it was possible</p>
+<p>3- not actually reading it</p>
+<p>person (thinking): ok, I read it...</p>
+<p>spoiler: she did not read it</p></section><section class="page"><h1>reproduce the bug</h1>
+<p>My favourite way to get information about buggy code is to run the buggy code and experiment on it.
+(Add print statements! Make a tiny change!)</p>
+<p>If the bug is happening on your computer every time you
+run your program: hooray! You've reproduced the bug!</p>
+<p>person (thinking): "ok, time to debug! I've got my print statements ready to go!"</p>
+<p>But if you can't make the bug happen, you're left guessing.</p>
+<p>person (thinking): "what was variable X set to when the bug happened? guess there's NO WAY TO KNOW"</p>
+<p>the next page has tips!</p></section><section class="page"><h1>inspect unreproducible bugs</h1>
+<p>When you can't reproduce a bug locally, it's tempting to just try random fixes and pray. Resist the temptation!</p>
+<p>Some ways to get information:</p>
+<ul>
+<li>try to reproduce the environment where it happened</li>
+<li>ask for screenshots / screen recordings</li>
+<li>add more logging, deploy your code, and repeat until you understand what caused the bug </li>
+<li>read the code VERY VERY carefully (incredibly boring but it actually does work sometimes)</li>
+<li>do your experimentation somewhere where you <em>can</em> reproduce the bug (on a staging server? on someone else's computer?)</li>
+</ul></section><section class="page"><h1>identify one small question</h1>
+<p>Debugging can feel huge and impossible. But all you have to do to make progress is:</p>
+<ol>
+<li>come up with ONE QUESTION about the bug.</li>
+<li>make sure the question is small enough that you can investigate it in ~20 minutes</li>
+<li>figure out the answer to that question</li>
+</ol>
+<p>person (thinking): hmm, this database all these query is slow... well, can I find out if the query is using an index?</p>
+<p>(image: other question marks around person's head, crossed out)</p>
+<p>ignore other questions for now! one at a time!</p></section><section class="page"><h1>retrace the code's steps</h1>
+<p>Here's a classic (but still very effective!) way to get started:</p>
+<ol>
+<li>find the line of code where the error happened</li>
+<li>trace backwards to investigate what could have caused that error. keep asking "why?"</li>
+</ol>
+<p>example: 
+* There's an error on line 58... 
+* that's because this variable has the wrong value...
+* the value is set by calling this function...
+* that function is making an HTTP request to the API...
+* the API response doesn't have the format I expected! Why is that?</p></section><section class="page"><h1>write a failing test</h1>
+<p>If your program already has tests, adding a failing test is a great way to work on your bug!</p>
+<p>person (thinking): this function should return X, but it's returning Y</p>
+<ul>
+<li>it forces you to pinpoint what exactly the bug is</li>
+<li>it's easy to tell when you've fixed it (the test passes!)</li>
+<li>you can keep the test to make sure the bug doesn't come back</li>
+</ul></section><section class="page"><h1>chapter 2</h1>
+<p>GET ORGANIZED</p>
+<p>(image of cute bug taking notes)</p></section><section class="page"><h1>brainstorm some suspects</h1>
+<p>person (thinking): brainstorming every possible cause I can think of helps me not get stuck on the 1 or 2 most obvious possibilities.</p>
+<ul>
+<li>could I be using the wrong version of this library? </li>
+<li>am I passing the wrong argument to function X?</li>
+<li>is something wrong with the server?</li>
+<li>is the entire internet broken???</li>
+</ul>
+<p>(there are two notes on the side pointing at the above text)</p>
+<ul>
+<li>no filter! even ridiculous ideas! </li>
+<li>sometimes I find it easier to think clearly when writing by hand on paper.</li>
+</ul></section><section class="page"><h1>rule things out</h1>
+<p>Once I have a list of suspects, I can think about how to eliminate them.</p>
+<p>person (thinking): "I'm really confused, but I can at least check if the server returned the right HTTP response here.."</p>
+<p>person (thinking): "that response looks good! the server isn't the problem!"</p>
+<p>note: here we're assuming that was the only request being made. Otherwise this wouldn't be a safe conclusion :)</p></section><section class="page"><h1>keep a log book</h1>
+<p>I don't usually write things down. But 2 hours into debugging, I get really confused:</p>
+<p>person (thinking): wait, what did that error message I saw 2 hours ago say again exactly??</p>
+<p>person (thinking): did I already try this???</p>
+<p>Keeping a document with notes makes it WAY easier to stay on track. It might contain:</p>
+<ul>
+<li>specific inputs I tried</li>
+<li>error messages I saw</li>
+<li>stack overflow URLs</li>
+</ul>
+<p>The log makes it easier to ask for help later if needed!</p></section><section class="page"><h1>draw a diagram</h1>
+<p>Some ideas:</p>
+<ul>
+<li>flowchart</li>
+<li>network diagram</li>
+<li>state diagram</li>
+<li>or anything else (like a data structure!)</li>
+</ul>
+<p>(there's a picture of an example diagram for each one)</p></section><section class="page"><h1>chapter 3</h1>
+<p>INVESTIGATE</p>
+<p>(picture of cute bug with a magnifying glass)</p></section><section class="page"><h1>add lots of print statements</h1>
+<p>I love to add print statements that print out 1, 2, 3, 4, 5... Using descriptive strings is smarter, but I usually use numbers or "wtf???"</p>
+<p><code>console.log(1)
+console.log(2)
+console.log(3)</code></p>
+<p>This helps me construct a timeline of which parts of my code ran and in what order:</p>
+<p>(picture of timeline of code, with some arrows pointing at it numbered 1, 2, 3)</p>
+<p>Often I'll discover something surprising, like "wait, 3, never got printed??? Why not???".</p></section><section class="page"><h1>use a debugger</h1>
+<p>A debugger is a tool for stepping through your code line by line and looking at variables. But not all debuggers are equal! Some languages' debuggers have more features than others. Your debugger might let you:</p>
+<ul>
+<li>jump into a REPL to poke around (see page 25)</li>
+<li>watch a location in memory and stop the program any time it's modified</li>
+<li>"record replay" debuggers let you record your entire program's execution and time travel</li>
+</ul>
+<p>person (thinking): I love record/replay debuggers because they make hard-to-reproduce bugs easier: I just have to reproduce the bug once</p></section><section class="page"><h1>jump into a REPL</h1>
+<p>In dynamic languages (like Python / Ruby / JS), you can use a debugger to jump into an interactive console (aka "REPL") at any point in your code.</p>
+<p>Here's how to do it in Python 3:</p>
+<p><code>my_var = call_some_function()
+breakpoint()</code></p>
+<ul>
+<li>edit your code</li>
+<li>rerun your code (refresh the page, whatever)</li>
+<li>play around in the REPL! You can call any function you want / try out fixes!</li>
+</ul>
+<p>How to do it in other languages:</p>
+<ul>
+<li>Ruby: <code>binding.pry</code></li>
+<li>Python (before 3.7): <code>import pdb; pdb.set_trace()</code></li>
+<li>Javascript: <code>debugger;</code></li>
+</ul></section><section class="page"><h1>find a version that works</h1>
+<p>If I have a bug with how I'm using a library, I like to:</p>
+<ul>
+<li>find a code example in the documentation</li>
+<li>make sure it works</li>
+<li>slowly change it to be more like my broken code</li>
+<li>test if it's still working after every single tiny change</li>
+</ul>
+<p>This puts me back on solid ground: with every change I make that DOESN'T cause the bug to come back, I know that change wasn't the problem.</p></section><section class="page"><h1>look at recent changes</h1>
+<p>Often when something is broken, it's because of a recent change. 
+Usually I look at recent changes manually, but git bisect is an amazing tool for finding exactly which git commit caused the problem. 
+We don't have space for a full git bisect tutorial here, but here's how you start using it:</p>
+<p><code>git bisect start
+git bisect bad HEAD
+git bisect good 1fe9dc # (ID of a commit that doesn't have the bug)
+git bisect start</code></p>
+<p>Then you can either tag buggy commits manually or run a script that does it automatically.</p></section><section class="page"><h1>sprinkle assertions everywhere</h1>
+<p>Some languages have an <code>assert</code> keyword that you can use to crash the program if a condition fails. Assertions let you:</p>
+<ul>
+<li>come up with something that should ALWAYS be true</li>
+<li>immediately crash the program if it isn't this variable is undefined!!!</li>
+</ul>
+<p>program cartoon (thinking): "STOP EVERYTHING!"</p>
+<p>This is a great way to force yourself to think about what's ALWAYS true in your program, and check if you're right.</p>
+<p>person (thinking): "the radius can never be 0, right? or can it?"</p></section><section class="page"><h1>comment out code</h1>
+<p>Commenting out code is an amazing way to quickly do experiments and figure out which part of your code is to blame. You can:</p>
+<ul>
+<li>comment out a function call and replace it with a hardcoded value, to check if the function call is broken</li>
+<li>if the error message doesn't give you a line number, comment out huge chunks of the program until the problem goes away</li>
+<li>comment out some code and rewrite it to see if the new version is better</li>
+</ul></section><section class="page"><h1>analyze the logs</h1>
+<p>If you can't reproduce a bug, sometimes you need to comb through the logs for clues. Some tips:</p>
+<ul>
+<li>filter out irrelevant lines (for example with <code>grep -v</code>)</li>
+<li>find 1 failed request and search for that request's ID to get all the logs for that request</li>
+<li>build a timeline: copy and paste log lines (and your interpretations!) into a document</li>
+<li>if you see a suspicious log line, search to make sure it doesn't also happen during normal operation</li>
+<li>if there's a cascade of errors, find the first error that started the problems</li>
+</ul></section><section class="page"><h1>chapter 4</h1>
+<p>RESEARCH</p>
+<p>(picture of a cute bug reading a book)</p></section><section class="page"><h1>read the docs</h1>
+<p>There are many ways to read the docs!</p>
+<ul>
+<li>the <strong>surgical strike</strong>: Search for a specific function, find an example on the page, copy it and leave. (this is often me :))</li>
+<li>the <strong>question quest</strong>: You have a specific question and you'll keep skimming different pages until you find the answer.</li>
+<li>the <strong>IDE integration</strong>: Set up your editor or IDE so that you can instantly jump to a function's documentation.</li>
+<li>the <strong>rigorous read</strong>: Get a cup of coffee and read all of the docs cover to cover, like a book.</li>
+</ul></section><section class="page"><h1>find the type of bug</h1>
+<p>If the bug is totally new to you, find out if there's a name people use for that type of bug!</p>
+<p>person: "this bug is happening intermittently, it's so weird."
+coworker: "that sounds like it might be a race condition..."
+person (thinking): "oh, what's a race condition?"</p>
+<p>examples:</p>
+<ul>
+<li>terminated by signal SIGSEGV (address boundary error) -&gt;  segmentation fault</li>
+<li>flexbox: div doesn't fit in other div (CSS) &gt; item overflowing container </li>
+<li>nodename nor servname provided, or not known =&gt; DNS lookup failure</li>
+<li>RecursionError: maximum recursion depth exceeded =&gt; stack overflow</li>
+</ul></section><section class="page"><h1>learn one small thing</h1>
+<p>Bugs are a GREAT way to discover things on the edge of your knowledge.</p>
+<p>person (thinking): "hmm, part of the problem here is that I don't understand how <code>position: absolute</code> works..."</p>
+<p>Finding one small thing I don't understand and learning it is really useful (and pretty fun!)</p>
+<p>person (thinking): "now I understand <code>position: absolute</code>! cool!"</p></section><section class="page"><h1>read the library's code</h1>
+<p>Lots of code isn't documented. But when there are no docs, there's always the
+source code! It sounds intimidating at first, but a quick search of the code
+sometimes gets me my answer really quickly.</p>
+<p>Tips for exploring an unfamiliar library's code:</p>
+<ul>
+<li>search the tests! Tests are a GREAT source of examples.</li>
+<li>git clone it locally to make it easier to navigate.</li>
+<li>search for your error message and trace back.</li>
+<li>if it's a Python/JS/Ruby library, sometimes I'll edit the library's code on my computer to add print statements (just remember to take them out after!)</li>
+</ul></section><section class="page"><h1>find a new source of info</h1>
+<p>We all know to look at the official documentation. Here are some less obvious places to look for answers:</p>
+<ul>
+<li>the project's Discord, Slack, IRC channel, or mailing list</li>
+<li>code search (search all of GitHub for how other people are using that library!)</li>
+<li>GitHub issues (did someone else have the same problem?)</li>
+<li>release notes (is the bug fixed in the new version?)</li>
+<li>a book chapter (you might have a book on this topic!)</li>
+<li>blog posts (sometimes there's an amazing explanation on the 2nd page of Google results)</li>
+</ul></section><section class="page"><h1>chapter 5</h1>
+<p>SIMPLIFY</p>
+<p>(picture of a cute bug with a big tangled ball of yarn, knitting)</p></section><section class="page"><h1>write a tiny program</h1>
+<p>Does your bug involve a library you don't understand?</p>
+<p>person (thinking): UGH, requests is NOT working how I expected it to!</p>
+<p>I like to convert my code using that library into a tiny standalone program which has the same bug:</p>
+<p>giant buggy program (big scribble, very complicated) =&gt;  20 lines of buggy code</p>
+<p>I find this makes it WAY EASIER to experiment and ask for help. And if it turns out that library actually has a bug, you can use your tiny program to report it.</p></section><section class="page"><h1>one thing at a time</h1>
+<p>It's tempting to try lots of fixes at once to save time:</p>
+<p>dream: I'm going to add Z, and replace X with Y, and improve C that'll definitely fix it!</p>
+<p>reality: ... now there's a new problem AND it's still broken</p>
+<p>If I found I've done this by accident, I'll:</p>
+<ul>
+<li>undo all my changes (<code>git stash</code>!)</li>
+<li>make a list of things to investigate, one at a time</li>
+</ul></section><section class="page"><h1>tidy up your code</h1>
+<p>Messy code is harder to debug.</p>
+<p>person (thinking): "this function is 100 lines??? who named these variables?!?!" (annotation: it was me)</p>
+<p>Doing a tiny bit of refactoring can make things easier, like:</p>
+<ul>
+<li>rename variables or functions</li>
+<li>format it with a code formatter (<code>go fmt</code>, <code>black</code>, etc.)</li>
+<li>add comments</li>
+<li>delete old/untrue comments</li>
+</ul>
+<p>Don't go overboard with the refactoring though: making too many changes can easily introduce new bugs.</p></section><section class="page"><h1>delete the buggy code</h1>
+<p>Sometimes the buggy code is not worth salvaging and should be deleted entirely. Reasons you might do this:</p>
+<ul>
+<li>
+<p>it uses a confusing library / tool
+person (thinking): this library isn't working, I'm going to switch to Y instead</p>
+</li>
+<li>
+<p>you have a better idea for how to implement it
+person (thinking): I bet I could avoid all these problems if I took X approach instead...</p>
+</li>
+</ul></section><section class="page"><h1>reduce randomness</h1>
+<p>It's much easier to debug when your program does the exact same thing every time you run it.</p>
+<p>person (thinking): "the bug only happens 10% of the time, it's SO HARD to figure out if my change fixed it or not."</p>
+<p>There are a bunch of tools for controlling your program's inputs to reduce randomness, for example:</p>
+<ul>
+<li>many random number generators let you set the seed so you get the same results every time.</li>
+<li><code>faketime</code> fakes the current time.</li>
+<li>libraries like ruby's <code>vcr</code> can record http requests.</li>
+<li>record/replay debuggers like <code>rr</code> record everything.</li>
+</ul></section><section class="page"><h1>chapter 6</h1>
+<p>GET UNSTUCK</p>
+<p>My favourite tricks to get from: "I'm NEVER going to figure this out!" to: "it seems obvious now!"</p>
+<p>(picture of a cute bug climbing out of a hole)</p></section><section class="page"><h1>take a break</h1>
+<p>Investigating a tricky bug requires a LOT of focus.</p>
+<p>person (thinking): "ugh, nothing is working..."</p>
+<p>(annotations on person): googling the same error message for the 7th time. very frustrated</p>
+<p>Instead, try one of these magical debugging techniques (even a 5 minute break can really help!):</p>
+<ul>
+<li>ride your bike!</li>
+<li>go to bed!</li>
+<li>get a coffee!</li>
+<li>have a shower!</li>
+<li>eat lunch!</li>
+</ul></section><section class="page"><h1>investigate the bug together</h1>
+<p>I find investigating a bug with someone else SO MUCH more fun than doing it alone. </p>
+<p>Debugging together lets you:</p>
+<p><strong>Teach each other new tools!</strong></p>
+<p>person: Let's use my favourite tool, strace!!!!!!</p>
+<p><strong>Learn new concepts!</strong></p>
+<p>person 1: What is this CORS thing?!?!
+person 2: Oh, I can explain that!</p>
+<p><strong>Keep each other on track</strong></p>
+<p>person 1: Maybe the problem is Y?
+person 2: We already ruled that out! Right, I forgot!</p></section><section class="page"><h1>timebox your investigation</h1>
+<p>Sometimes I need to trick myself into getting started:</p>
+<p>person (thinking): "UGH, I do NOT want to look at this CSS bug!!!!"</p>
+<p>Giving myself a time limit really helps:</p>
+<p>person (thinking): "Okay, I'll just see what I can figure out in 20 minutes..."</p>
+<p>You can't always solve it in 15 minutes, but this works surprisingly often!</p>
+<p>... 15 minutes later ... </p>
+<p>person (thinking): "all fixed! That wasn't so hard!"</p></section><section class="page"><h1>write a message asking for help</h1>
+<p>When I'm REALLY stuck, I'll write an email to a friend:</p>
+<ul>
+<li>"Here's what I'm trying to do..."</li>
+<li>"I did X and I expected Y to happen, but instead..."</li>
+<li>"Could this be because....?"</li>
+<li>"This seems impossible because..."</li>
+<li>"I've tried A, B, and C to fix it, but...."</li>
+</ul>
+<p>This helps me organize my thoughts, and often by the time I finish writing, I've magically fixed the problem on my own!</p>
+<p>It has to be a specific person, so that the imaginary version of them in my mind will say useful things :)</p></section><section class="page"><h1>explain the bug out loud</h1>
+<p>Explaining what's going wrong out loud is magic.</p>
+<p>person: "so, when I do X thing, I'm getting an error, and it doesn't make any sense because I already checked that A and B are working...."
+other person (wearing a rubber duck shirt): (doesn't say anything)</p>
+<p><pause for 5 seconds></p>
+<p>person (thinking): "OH I SEE WHAT I DID WRONG"
+other person (wearing a rubber duck shirt): "happy to help!"</p>
+<p>People call this "rubber ducking" because the other person might as well be a rubber duck.</p></section><section class="page"><h1>make sure your code is running</h1>
+<p>person (thinking): NOTHING I try is helping, this is IMPOSSIBLE</p>
+<p>person (thinking): wait... nothing I try is changing anything.... is my code even being run????</p>
+<p>If my changes have no effect at all, often it means I've made a silly mistake (like forgetting to restart the app) and my changes aren't being run!</p>
+<p>I like to check that my code is being run by printing something out (like <code>print("asdf")</code>). Or, if that's not possible, I'll introduce an error so that it crashes.</p></section><section class="page"><h1>do the annoying thing</h1>
+<p>Sometimes when I'm debugging, there are things I'll refuse to try because they take too long.</p>
+<p>person (thinking): ugh, that part of the code is so confusing, I don't want to look at it...</p>
+<p>But as I become more and more desperate, eventually I'll give in and do the annoying thing. Often it helps!</p>
+<p>person (thinking): FINE, I'll look at that code... oh, yeah, here's the bug.</p></section><section class="page"><h1>chapter 7</h1>
+<p>IMPROVE YOUR TOOLKIT</p>
+<p>(cute picture of a bug swinging a hammer, next to a toolbox)</p></section><section class="page"><h1>try out a new tool</h1>
+<p>There are TONS of great debugging tools (listed on the next page!), but often they have a steep learning curve. </p>
+<p>Some tips to get started:</p>
+<ul>
+<li>get someone more experienced to show you an example of how they'd use the tool.  (this is SO helpful!!!)</li>
+<li>try it out when investigating a low stakes bug, so it's no big deal if it doesn't work out. </li>
+<li>take notes with examples of the options you used, so you can refer to them next time.</li>
+</ul></section><section class="page"><h1>types of debugging tools</h1>
+<p>Here are some tools I've found useful:</p>
+<ul>
+<li>debuggers! (most languages have one!)</li>
+<li>profilers: perf, pprof, py-spy</li>
+<li>tracers: strace, ltrace, ftrace, BPF tools</li>
+<li>network spy tools: tcpdump, wireshark, ngrep, mitmproxy</li>
+<li>web automation tools: selenium, playwright</li>
+<li>load testers: ab, wrk</li>
+<li>test frameworks: pytest, RSpec</li>
+<li>linters/static analysis tools: black, eslint, pyright</li>
+<li>data formatting tools: xxd, hexdump, jq, graphviz</li>
+<li>dynamic analysis tools: valgrind, asan, tsan, ubsan</li>
+<li>fuzzers/property testing: hypothesis, quickcheck, Go's fuzzer</li>
+</ul>
+<p>(I've never used those last two but lots of people say they're helpful.)</p></section><section class="page"><h1>shorten your feedback loop</h1>
+<p>when you're investigating a bug, you'll need to run the buggy code a million times.</p>
+<p>person (thinking): ugh, i need to type all this information into the form to trigger the bug again??? this is literally the 30th time :( :(</p>
+<p>ways to speed it up:</p>
+<ul>
+<li>use a browser automation tool to fill in forms / click buttons for you!</li>
+<li>write a unit test!</li>
+<li>autorun your code every time you save!</li>
+</ul></section><section class="page"><h1>add pretty printing</h1>
+<p>Sometimes you print out an object, and it just prints the class name and reference ID, like this:</p>
+<p><code>MyObject&lt;#18238120323&gt;</code></p>
+<p>person (thinking): "ugh, thanks,  very helpful... "</p>
+<p>Implementing a custom string representation for a class you're often printing out can save a LOT of time. The name of the method you need to implement is:</p>
+<p><code>Python: .__str__
+Ruby: .to_s
+JavaScript: .toString
+Java: .toString
+Go: String()</code></p>
+<p>Also, pretty-printing libraries (like pprint in Python or awesome_print in Ruby) are great for printing out arrays/hashmaps.</p></section><section class="page"><h1>colours, graphs, and sounds</h1>
+<p>Instead of printing text, your program can tell you about its state by generating a picture! Or playing sounds at key moments!</p>
+<p>Some ways your programs can generate pictures or sounds:</p>
+<ul>
+<li>add colours to your log lines (every letter of 'colours' is a different colour)</li>
+<li>add red outlines around every HTML element! ("red" and "outlines" have a red outline around them)</li>
+<li>Haskell has an option to beep at the start of every major garbage collection (there's a bell icon after "beep")</li>
+<li>draw a chart of events over time (chart icon)</li>
+<li>use graphviz to generate a diagram of your program's internal state (there's a picture of a little graph diagram with a -&gt; b, a -&gt; c)</li>
+</ul></section><section class="page"><h1>chapter 8</h1>
+<p>AFTER IT'S FIXED</p>
+<p>(picture of happy bug celebrating)</p></section><section class="page"><h1>do a victory lap</h1>
+<p>Once you've solved it, don't forget to celebrate! Take a break! Feel smart!</p>
+<p>person (thinking): "i did it, i did it, i'm amazing" (now is not the time for humility)</p>
+<p>The best part of understanding a bug is that it makes it SO MUCH easier for you to solve similar future bugs.</p>
+<p>person (thinking): I've seen something like this before, maybe the problem is X? 
+colleague: (annotation, saying that they're awestruck at your brilliance)</p></section><section class="page"><h1>tell a friend what you learned</h1>
+<p>I love to celebrate squashing a bug by telling a friend:</p>
+<p>person: hey marie, did you know about this weird thing that can happen with CSS flexbox?</p>
+<p>Some possible outcomes of this:</p>
+<ul>
+<li>they've seen that bug too, and teach me something else!</li>
+<li>they learn something new!</li>
+<li>they ask questions I hadn't thought of</li>
+<li>they tell me about a website/tool I didn't know about</li>
+<li>it helps solidify my knowledge!</li>
+</ul></section><section class="page"><h1>find related bugs</h1>
+<p>When you're done fixing a bug, glance around to see if there are any obvious places in your code that have the same bug.</p>
+<p>person (thinking): "I was calling function X wrong, I'll check if we're calling that function wrong anywhere else!"</p>
+<p>person (thinking): "wow, my assumption about how Y worked was TOTALLY wrong, I should go back and fix some things..."</p></section><section class="page"><h1>add a comment</h1>
+<p>Some bug fixes are a little counterintuitive. Otherwise you would have written the code that way in the first place! You might think:</p>
+<p>person (thinking): "I'll remember why I added this code, I spent 5 hours this is a debugging it!</p>
+<p>this is a trap!!!!!</p>
+<p>Adding a comment can help future you (or your coworkers!) avoid accidentally reviving a bug later.</p>
+<p>person (thinking): ooh, I could simplify this code!</p>
+<p>bug (talking): "I'm back!"</p></section><section class="page"><h1>document your quest</h1>
+<p>For very tricky bugs, writing up an explanation of what went wrong and how you figured it out is an amazing way to share knowledge and make sure you really understand it.</p>
+<p>Ways I've done this in the past:</p>
+<ul>
+<li>write a quick explanation in the commit message</li>
+<li>complain about it in the internal chat! (so people can search for it!)</li>
+<li>write a fun blog post telling my tale of woe!</li>
+<li>for really important work bugs, write a 5-page document with graphs explaining all the weird stuff I learned along the way</li>
+</ul></section><section class="page"><h1>thanks for reading</h1>
+<p>One more thing: I also built a choose-your-own-adventure debugging game to go
+with this zine, where you can solve computer networking mysteries:</p>
+<p>https://mysteries.wizardzines.com</p>
+<p>credits:</p>
+<ul>
+<li>Cover art: Vladimir Kasikovic</li>
+<li>Copy editing: Gersande La Fleche</li>
+<li>Editing: Dolly Lanuza, Kamal Marhubi</li>
+<li>Pairing: Marie Claire LeBlanc Flanagan</li>
+<li>and thanks to all the beta readers</li>
+</ul></section><section class="page"><h1>back cover</h1>
+<p>love this? more at wizardzines.com</p></section>
