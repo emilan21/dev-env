@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Install Steam via pacman
+# https://wiki.archlinux.org/title/Steam
+
+# Enable multilib in /etc/pacman.conf
+sudo sed -i 's/#\[multilib\]/[multilib]/g' /etc/pacman.conf
+sudo sed -i 's/#Include = \/etc\/pacman\.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/g' /etc/pacman.conf
+
+# Install steam
+sudo pacman -Syy
+sudo pacman -S steam ttf-liberation lib32-systemd
+
+# Let the user know to install the 32-bit version of the OpenGL graphics driver
+# https://wiki.archlinux.org/title/Xorg#Driver_installation
+echo "Install the 32-bit OpenGL driver such as the lib32-nvidia-utils"
+echo "Link here. https://wiki.archlinux.org/title/Xorg#Driver_installation"

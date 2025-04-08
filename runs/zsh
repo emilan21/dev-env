@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syy
+sudo pacman -S zsh ttf-inconsolata-nerd fzf zoxide exa bat ripgrep fd procs duf dust
+hash -r
+sudo chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

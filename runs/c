@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Install programs for c dev
+sudo pacman -Syy
+sudo pacman -S clang

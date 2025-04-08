@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Pacman
+# https://wiki.archlinux.org/title/Docker
+
+sudo pacman -Syy
+sudo pacman -S docker docker-compose
+sudo systemctl start docker
+sudo systemctl enable docker

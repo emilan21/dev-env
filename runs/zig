@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Installed via pre-built tar file
+#
+
+#sudo pacman -Syy
+#sudo pacman -S cmake clang lld llvm
+wget https://ziglang.org/download/0.14.0/zig-0.14.0.tar.xz -P $HOME/personal/zig_source
+
+cd $HOME/personal/zig_source
+#mkdir $HOME/.local/zig
+tar xvf zig-0.14.0.tar.xz -C $HOME/personal/
+cd $HOME/personal/zig-0.14.0
+mkdir build
+cd $HOME/personal/zig-0.14.0/build
+cmake ..
+make install
+cp stage3/bin/zig $HOME/.local/zig

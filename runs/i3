@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-#git clone -b v4.24 https://github.com/i3/i3.git $HOME/personal/i3
-sudo pacman -S i3 dmenu rofi
+# Installed via pacman
+# https://wiki.archlinux.org/title/I3
 
-#cd $HOME/personal/i3
-#make
-#sudo make install
+sudo pacman -Syy
+sudo pacman -S i3 dmenu rofi sway

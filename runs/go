@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Install go via pacman
+# https://wiki.archlinux.org/title/Go
+
+sudo pacman -Syy
+sudo pacman -S go

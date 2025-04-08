@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syy
+sudo pacman -S git ripgrep jq tldr fzf

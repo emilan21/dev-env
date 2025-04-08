@@ -17,6 +17,8 @@ fi
 # Path Exports
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+export ZIGPATH=$HOME/personal/zig/build/stage3/bin
+export PATH=$ZIGPATH/bin:$PATH
 export EDITOR=nvim
 
 # Source/Load zinit

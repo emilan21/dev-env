@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Install odin from source
+# https://odin-lang.org/docs/install/
+
+git clone https://github.com/odin-lang/Odin $HOME/.local/odin
+cd $HOME/.local/odin
+make release-native

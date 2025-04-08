@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Create common directories
+mkdir $HOME/screenshots
+mkdir $HOME/screenrecordings
+mkdir $HOME/.config/personal

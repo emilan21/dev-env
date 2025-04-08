@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Install clang via pacman
+# https://wiki.archlinux.org/title/GNU#Toolchain
+sudo pacman -Syy
+sudo pacman -S clang

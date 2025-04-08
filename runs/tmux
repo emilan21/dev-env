@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Installing tmux via pacman
+sudo pacman -Syy
+sudo pacman -S tmux
