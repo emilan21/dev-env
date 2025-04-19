@@ -10,6 +10,10 @@ mkdir $HOME/.local/bin
 mkdir $HOME/.local/zig
 mkdir $HOME/.local/npm/bin
 mkdir $HOME/.local/n/bin
+mkdir $HOME/.config/personal
+mkdir $HOME/.local/apps
+mkdir $HOME/.local/scripts
+mkdir $HOME/.local/bin
 mkdir $HOME/.local/apps/
 mkdir $HOME/.local/go/bin
 mkdir /usr/local/go/bin
