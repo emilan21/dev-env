@@ -99,6 +99,9 @@ alias du=dust
 alias less='bat --paging=always'
 alias vim='nvim'
 alias c='clear'
+alias gs='git status'
+alias gb='git branch'
+alias gc='git checkout'
 
 # Shell intergrations
 {eval `ssh-agent`; ssh-add ~/.ssh/gitea_laptop; } &>/dev/null

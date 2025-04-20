@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 languages=`echo "golang lua cpp c rust zig python" | tr " " "\n"`
-core_utils=`echo "xargs find mv sed awk grep tree ls cd rm" | tr " " "\n"`
+core_utils=`echo "xargs find mv sed awk grep tree ls cd rm tmux cat uname" | tr " " "\n"`
 
 selected=`printf "$languages\n$core_utils" | fzf`
 read -p "query: " query
