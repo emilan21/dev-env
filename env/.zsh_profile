@@ -8,7 +8,7 @@ for i in `find -L $PERSONAL`; do
 done
 
 ## All that sweet sweet fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 export GOPATH=$HOME/.local/go
 export GIT_EDITOR=$VIM
@@ -62,7 +62,6 @@ addToPathFront /usr/local/go/bin
 #addToPathFront $HOME/personal/sumneko/bin
 addToPathFront $HOME/.deno/bin
 addToPath $HOME/.cargo/bin
-#addToPath $HOME/personal/ghostty/zig-out/bin
 addToPath $HOME/.local/personal
 addToPath $HOME/.sst/bin
 addToPathFront $HOME/.local/zig # some how zig-0.13 just keeps getting added and i CANNOT find it anywhere
@@ -75,17 +74,17 @@ alias gt='NODE_OPTIONS="--no-deprecation" gt'
 #source ~/.config/envman/load.sh
 
 # History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+#HISTSIZE=5000
+#HISTFILE=~/.zsh_history
+#SAVEHIST=$HISTSIZE
+#HISTDUP=erase
+#setopt appendhistory
+#setopt sharehistory
+#setopt hist_ignore_space
+#setopt hist_ignore_all_dups
+#setopt hist_save_no_dups
+#setopt hist_ignore_dups
+#setopt hist_find_no_dups
 
 # Aliases
 alias ls='exa'
