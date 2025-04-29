@@ -9,10 +9,12 @@
 * Send keys to specific session:window - `tmux switch-client -t dev:foobar "echo hello" ^M^[`
 * Reload tmux.conf - `<leader> r`
 * cht.sh script - `<leader> i`
-* List sessions - `tmux ls` or `Ctrl + b s`
+* List sessions - `tmux ls` or `Ctrl + a s`
 * Detach session - `<leader> d`
 * Attach to last session - `tmux a`
 * Attach to a session with a name - `tmux a -t mysession`
+* Switch to previous session - `Ctrl + a L`
+* Kill session interactivitly (best way) - `Ctrl + a w` then on sessions hit `x`
 * Create session with a name - `tmux new-session -ds sessionname`
 * Killing my session - `$ tmux kill-session -t mysession`
 * Rename - `<leader> $`
