@@ -4,7 +4,7 @@
 # https://github.com/neovim/neovim
 
 git clone -b v0.10.4 https://github.com/neovim/neovim.git $HOME/personal/neovim
-sudo pacman -S cmake gettext lua5.1 liblua5.1-0-dev
+sudo pacman -S cmake gettext lua5.1 liblua5.1-0-dev luarocks
 
 cd $HOME/personal/neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
