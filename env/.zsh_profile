@@ -101,6 +101,7 @@ alias c='clear'
 alias gs='git status'
 alias gb='git branch'
 alias gc='git checkout'
+alias ts='tmux-sessionizer'
 
 # Shell intergrations
 {eval `ssh-agent`; ssh-add ~/.ssh/gitea_laptop; } &>/dev/null
