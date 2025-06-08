@@ -90,10 +90,10 @@ alias gt='NODE_OPTIONS="--no-deprecation" gt'
 alias ls='exa'
 alias ll='exa -alh'
 alias tree='exa --tree'
-alias cat=bat
 alias grep=rg
 alias ps=procs
 alias df=duf
+alias cat=bat
 alias du=dust
 alias less='bat --paging=always'
 alias vim='nvim'
