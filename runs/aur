@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 # Install aur packages
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/google-chrome.tar.gz -P /tmp/
+# Install Zen
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/zen-browser-bin.tar.gz -P /tmp/
 cd /tmp
-tar zxvf google-chrome.tar.gz
-cd google-chrome
+tar zxvf zen-browser-bin.tar.gz
+cd zen-browser-bin
 makepkg -sri
